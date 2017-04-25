@@ -1,0 +1,38 @@
+{
+  "name": "snooze-slack-on-weekends",
+  "description": "Stop your team from bugging you when it's the freakin' weekend (or a holiday)!",
+  "version": "1.0.0",
+  "author": "John Flesch <john@fles.ch> (https://fles.ch/)",
+  "bugs": {
+    "url": "https://github.com/flesch/snooze-slack-on-weekends/issues"
+  },
+  "dependencies": {
+    "@slack/client": "^3.9.0",
+    "moment": "^2.17.1",
+    "wgl-holidays": "^3.0.0"
+  },
+  "homepage": "https://github.com/flesch/snooze-slack-on-weekends#readme",
+  "keywords": [
+    "holiday",
+    "slack",
+    "snooze",
+    "weekend",
+    "work/life"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flesch/snooze-slack-on-weekends.git"
+  },
+  "scripts": {
+    "claudia": "claudia --profile ${AWS_PROFILE:-default}",
+    "create": "claudia --profile ${AWS_PROFILE:-default} create --handler index.handler --region us-east-1 --no-optional-dependencies --set-env-from-json env.json --version v${npm_package_version:0:1}",
+    "destroy": "claudia --profile ${AWS_PROFILE:-default} destroy",
+    "schedule": "claudia --profile ${AWS_PROFILE:-default} add-scheduled-event --name ${npm_package_name} --event ./event.json --schedule 'cron(0 8 * * ? *)' --version v${npm_package_version:0:1}",
+    "update": "claudia --profile ${AWS_PROFILE:-default} update --no-optional-dependencies --set-env-from-json env.json --version v${npm_package_version:0:1}"
+  },
+  "devDependencies": {
+    "claudia": "^2.10.0"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "lambda": {
+    "role": "snooze-slack-on-weekends-executor",
+    "name": "snooze-slack-on-weekends",
+    "region": "us-east-1"
+  }
+}
